@@ -1,0 +1,62 @@
+<style>
+  input[type=text],
+  select {
+    width: 20%;
+    padding: 5px 5px;
+    margin: 1px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 5px;
+    margin: 1px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  div {
+    border-radius: 2px;
+    background-color: #f2f2f2;
+    padding: 2px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<div>
+  <h2 *ngIf="!userInfo || userInfo.id === undefined">Add record</h2>
+  <h2 *ngIf="userInfo && userInfo.id !== undefined">Update record</h2>
+  <form>
+    <div class="form-group">
+      <label for="text">Name    </label>
+      <input type="text" id="name-input" [(ngModel)]="userInfo.name" [ngModelOptions]="{standalone: true}"
+        class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="text">Contact Number    </label>
+      <input type="text" id="contactnumber-input" [(ngModel)]="userInfo.contactNumber" [ngModelOptions]="{standalone: true}"
+        class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="text">Role    </label>
+      <!-- <input type="text" id="role-input" [(ngModel)]="userInfo.role"  [ngModelOptions]="{standalone: true}" class="form-control" /> -->
+      <input type="radio" id="Marketing" name="marketing" value="Marketing" [(ngModel)]="userInfo.role"  [ngModelOptions]="{standalone: true}" class="form-control" >
+      <label for="Marketing">Marketing</label>
+      <input type="radio" id="Admin" name="admin" value="Admin" [(ngModel)]="userInfo.role"  [ngModelOptions]="{standalone: true}" class="form-control" >
+      <label for="Admin">Admin</label><br>
+    </div>
+    <p>
+    <button type="button" class="btn btn-primary" (click)="addOrUpdateUserRecord($event);">Save</button></p>
+
+  </form>
+</div>

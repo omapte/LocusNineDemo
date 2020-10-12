@@ -1,0 +1,71 @@
+<style>
+  #customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  #new-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    
+  }
+</style>
+
+<p>
+<button type="button" id="new-button" (click)="newRecord()">New User</button>
+</p>
+<table id="customers">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Contact Number</th>
+      <th>Status</th>
+      <th>Commands</th>
+      <th>Commands</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userInfo of userData">
+      <td>{{ userInfo.name }}</td>
+      <td>{{ userInfo.email }}</td>
+      <td>{{ userInfo.role }}</td>
+      <td>{{ userInfo.contactNumber }}</td>
+      <td>{{ userInfo.status }}</td>      
+      <td><a href="#" (click)="editRecord(this.userInfo)">Edit</a></td>
+      <td><a href="#" (click)="deleteRecord(this.userInfo)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

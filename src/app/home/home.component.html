@@ -1,0 +1,17 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+         <app-add-or-update-user (userCreated)="createOrUpdateUser($event)" [userInfo]="currentUser"></app-add-or-update-user>
+    </div>
+    <div class="col-md-8">
+        <app-user-grid [userData]="userData"
+        (editClicked)="editClicked($event)" 
+        (newClicked)="newClicked()" 
+        (recordDeleted)="deleteClicked($event)"></app-user-grid>
+    </div>
+  </div>
